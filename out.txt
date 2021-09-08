@@ -1,0 +1,110 @@
+make cshantyc
+make[1]: Entering directory '/mnt/c/Users/PADLOCK/Dropbox/faculty/teaching/eecs665/cshanty/p2/p2_files'
+g++ -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2 -Wuninitialized -Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wsign-conversion -Wsign-promo -Wstrict-overflow=5 -Wundef -Werror -Wno-unused -Wno-unused-parameter -Wno-sign-compare -Wno-sign-conversion -Wno-switch-default -g -std=c++14 -MMD -MP -c -o parser.o parser.cc
+In file included from parser.cc:40:
+cshanty.yy:52:13: error: ‘ProgramNode’ in namespace ‘cshanty’ does not name a type
+   52 |    cshanty::ProgramNode*                   transProgram;
+      |             ^~~~~~~~~~~
+cshanty.yy:53:23: error: ‘DeclNode’ is not a member of ‘cshanty’
+   53 |    std::list<cshanty::DeclNode *> *        transDeclList;
+      |                       ^~~~~~~~
+cshanty.yy:53:23: error: ‘DeclNode’ is not a member of ‘cshanty’
+cshanty.yy:53:33: error: template argument 1 is invalid
+   53 |    std::list<cshanty::DeclNode *> *        transDeclList;
+      |                                 ^
+cshanty.yy:53:33: error: template argument 2 is invalid
+cshanty.yy:54:13: error: ‘DeclNode’ in namespace ‘cshanty’ does not name a type
+   54 |    cshanty::DeclNode *                     transDecl;
+      |             ^~~~~~~~
+cshanty.yy:55:13: error: ‘VarDeclNode’ in namespace ‘cshanty’ does not name a type
+   55 |    cshanty::VarDeclNode *                  transVarDecl;
+      |             ^~~~~~~~~~~
+cshanty.yy:56:13: error: ‘TypeNode’ in namespace ‘cshanty’ does not name a type
+   56 |    cshanty::TypeNode *                     transType;
+      |             ^~~~~~~~
+cshanty.yy:57:13: error: ‘IDNode’ in namespace ‘cshanty’ does not name a type
+   57 |    cshanty::IDNode *                       transID;
+      |             ^~~~~~
+In file included from parser.cc:40:
+grammar.hh:405:55: error: ‘cshanty::ProgramNode’ has not been declared
+  405 |     Parser (cshanty::Scanner &scanner_yyarg, cshanty::ProgramNode** root_yyarg);
+      |                                                       ^~~~~~~~~~~
+grammar.hh:752:14: error: ‘ProgramNode’ in namespace ‘cshanty’ does not name a type
+  752 |     cshanty::ProgramNode** root;
+      |              ^~~~~~~~~~~
+In file included from cshanty.yy:40:
+scanner.hpp: In member function ‘int cshanty::Scanner::makeBareToken(int)’:
+scanner.hpp:33:23: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘lexeme’
+   33 |         this->yylval->lexeme = new Token(
+      |                       ^~~~~~
+parser.cc: At global scope:
+parser.cc:178:61: error: ‘cshanty::ProgramNode’ has not been declared
+  178 |   Parser::Parser (cshanty::Scanner &scanner_yyarg, cshanty::ProgramNode** root_yyarg)
+      |                                                             ^~~~~~~~~~~
+parser.cc: In constructor ‘cshanty::Parser::Parser(cshanty::Scanner&, int**)’:
+parser.cc:186:7: error: class ‘cshanty::Parser’ does not have any field named ‘root’
+  186 |       root (root_yyarg)
+      |       ^~~~
+cshanty.yy: In member function ‘virtual int cshanty::Parser::parse()’:
+cshanty.yy:144:18: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transProgram’
+  144 |     $$ = new ProgramNode($1);
+      |                  ^~~~~~~~~~~~
+cshanty.yy:144:38: error: expected type-specifier before ‘ProgramNode’
+  144 |     $$ = new ProgramNode($1);
+      |                                      ^          
+cshanty.yy:145:6: error: ‘root’ was not declared in this scope
+  145 |     *root = $$;
+      |      ^~~~
+cshanty.yy:145:26: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transProgram’
+  145 |     *root = $$;
+      |                          ^           
+cshanty.yy:151:7: error: ‘DeclNode’ was not declared in this scope
+  151 |       DeclNode * declNode = $2;
+      |       ^~~~~~~~
+cshanty.yy:151:18: error: ‘declNode’ was not declared in this scope
+  151 |       DeclNode * declNode = $2;
+      |                  ^~~~~~~~
+cshanty.yy:151:48: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transDecl’; did you mean ‘transDeclList’?
+  151 |       DeclNode * declNode = $2;
+      |                                                ^        
+      |                                                transDeclList
+cshanty.yy:152:34: error: request for member ‘push_back’ in ‘* yylhs.cshanty::Parser::stack_symbol_type::<anonymous>.cshanty::Parser::basic_symbol<cshanty::Parser::by_state>::value.cshanty::Parser::semantic_type::transDeclList’, which is of non-class type ‘int’
+  152 |     $$->push_back(declNode);
+      |                                  ^        
+cshanty.yy:155:65: error: ‘DeclNode’ was not declared in this scope
+  155 |     { $$ = new std::list<DeclNode * >(); }
+      |                                                                 ^       
+cshanty.yy:155:76: error: template argument 1 is invalid
+  155 |     { $$ = new std::list<DeclNode * >(); }
+      |                                                                            ^
+cshanty.yy:155:76: error: template argument 2 is invalid
+cshanty.yy:167:38: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transType’; did you mean ‘transToken’?
+  167 |     size_t line = $1->line();
+      |                                      ^        
+      |                                      transToken
+cshanty.yy:168:37: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transType’; did you mean ‘transToken’?
+  168 |     size_t col = $1->col();
+      |                                     ^        
+      |                                     transToken
+cshanty.yy:169:18: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transVarDecl’
+  169 |     $$ = new VarDeclNode(line, col, $1, $2);
+      |                  ^~~~~~~~~~~~
+cshanty.yy:169:38: error: expected type-specifier before ‘VarDeclNode’
+  169 |     $$ = new VarDeclNode(line, col, $1, $2);
+      |                                      ^~~~~~~    
+cshanty.yy:174:18: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transType’; did you mean ‘transToken’?
+  174 |     $$ = new IntTypeNode($1->line(), $1->col());
+      |                  ^~~~~~~~~
+      |                  transToken
+cshanty.yy:174:35: error: expected type-specifier before ‘IntTypeNode’
+  174 |     $$ = new IntTypeNode($1->line(), $1->col());
+      |                                   ^~~~~~~~~~~
+cshanty.yy:247:37: error: ‘union cshanty::Parser::semantic_type’ has no member named ‘transID’
+  247 | id  : ID { $$ = new IDNode($1); }
+      |                                     ^      
+cshanty.yy:247:52: error: expected type-specifier before ‘IDNode’
+  247 | id  : ID { $$ = new IDNode($1); }
+      |                                                    ^     
+make[1]: *** [Makefile:29: parser.o] Error 1
+make[1]: Leaving directory '/mnt/c/Users/PADLOCK/Dropbox/faculty/teaching/eecs665/cshanty/p2/p2_files'
+make: *** [Makefile:15: all] Error 2
